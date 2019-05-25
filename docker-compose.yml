@@ -1,0 +1,19 @@
+#  vim: set et fenc=utf-8 ff=unix sts=2 sw=2 ts=2
+version: "3.4"
+
+services:
+
+  ejabberd:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: ${XMPP_DOMAIN}
+    ports:
+      - 5222:5222
+      #- 5269:5269
+      #- 5280:5280
+    environment:
+      - ERLANG_NODE=${ERLANG_NODE}
+      - XMPP_DOMAIN=${XMPP_DOMAIN}
+      - EJABBERD_ADMINS=${EJABBERD_ADMINS}
+      - EJABBERD_USERS=${EJABBERD_USERS}
